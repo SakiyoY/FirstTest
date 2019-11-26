@@ -1,0 +1,136 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="SendMessage_test" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="SendMessage_test_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:us="clr-namespace:UiPath.Slack;assembly=UiPath.Slack"
+ xmlns:usa="clr-namespace:UiPath.Slack.Activities;assembly=UiPath.Slack.Activities"
+ xmlns:usm="clr-namespace:UiPath.Slack.Models;assembly=UiPath.Slack"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="SendMessage/UpdateStatus_test" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <usa:SlackScope Client="{x:Null}" Token="{x:Null}" ClientID="717364178357.717220510290" ClientSecret="40cfd95b6c86db46dabeeb1e1ccc4c4c" DisplayName="Slack Scope" sap2010:WorkflowViewState.IdRef="SlackScope_1" Scopes="PublicChannels, PrivateChannels, DirectMessage, GroupMessage, Files, Users, Chat">
+      <usa:SlackScope.Body>
+        <ActivityAction x:TypeArguments="us:SlackClient">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="us:SlackClient" Name="SlackScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="usm:Message[]" Name="RecentMessages" />
+              <Variable x:TypeArguments="x:Int32" Name="idx" />
+            </Sequence.Variables>
+            <ui:CommentOut DisplayName="コメントアウト (Send Message)" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="無視されたアクティビティ" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <usa:SendMessage File="{x:Null}" Message="{x:Null}" Conversation="sakiyo.yamaoka" DisplayName="Send Message" sap2010:WorkflowViewState.IdRef="SendMessage_1" Text="（・∀・）ﾆﾔﾆﾔ" />
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
+            <usa:UpdateStatus sap2010:Annotation.AnnotationText="Clear Afterが現在時刻になってしまう？" ClearAfter="[DateTime.Now.AddMinutes( 10 )]" DisplayName="Update Status" Emoji="🍵" sap2010:WorkflowViewState.IdRef="UpdateStatus_1" Status="Status update test from UiPath Studio" />
+            <WriteLine DisplayName="1 行を書き込み" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Crear after: &quot; + DateTime.Now.AddMinutes(10).ToShortTimeString]" />
+          </Sequence>
+        </ActivityAction>
+      </usa:SlackScope.Body>
+    </usa:SlackScope>
+    <sads:DebugSymbol.Symbol>d05DOlxVc2Vyc1xTYWtpeW8gWWFtYW9rYVxEZXNrdG9wXHRtcFxldGNcd29ya2Zsb3dcU2xhY2tfdGVzdFxBY3Rpdml0eV90ZXN0LnhhbWwMQQNbDgIBAUIFWRYCAQJCQUJcAgEMQmpCjAECAQtIC1YWAgEDTQ1THQIBClQNVJICAgEGVQ1VsgECAQRUZ1SIAQIBCVSrAVSvAQIBCFToAVSPAgIBB1ViVa8BAgEF</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="SendMessage_1" sap:VirtualizedContainerService.HintSize="314,111" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="336,235">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_1" sap:VirtualizedContainerService.HintSize="314,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="UpdateStatus_1" sap:VirtualizedContainerService.HintSize="314,113">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="314,61" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336,429">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SlackScope_1" sap:VirtualizedContainerService.HintSize="414,543" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="436,667">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SendMessage_test_1" sap:VirtualizedContainerService.HintSize="476,747" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
